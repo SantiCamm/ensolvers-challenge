@@ -38,17 +38,22 @@ body {
 }
 
 .container {
-    width: 600px;
+    width: 800px;
     height: 100%;
-    background-color: white;
-    border-radius: 5px;
-    padding: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    /* background-color: white; */
 }
 
 .input {
+    border-radius: 5px;
+    padding: 25px;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    width: 100%;
+    background-color: white;
 }
 
 .header {

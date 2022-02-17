@@ -5,12 +5,12 @@ import TodoItem from './TodoItem';
 
 const TodoList = () => {
   const { getTodos, todos, isLoading} = useContext(GlobalContext);
-
+  
   useEffect(() => {
     getTodos();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
+  
   return (
     <Group spacing="xs" position="center" styles={(theme) => ({
       root: {
@@ -24,7 +24,7 @@ const TodoList = () => {
               width: "100%",
             }
           })}>
-            {todos.map((todo) => (
+            {todos?.map((todo) => (
               <TodoItem key={todo.id} {...todo} />
             ))}
           </Group>

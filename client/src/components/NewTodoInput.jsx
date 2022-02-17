@@ -1,19 +1,17 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import { Button, Loader, Select, TextInput } from "@mantine/core";
 import { GlobalContext } from "../context/GlobalState";
 
 const NewTodoInput = () => {
-  const { addTodo, getFolders, foldersSelect, isLoading } = useContext(GlobalContext);
+  const { addTodo, getFolders, isLoading, foldersSelect } = useContext(GlobalContext);
   const [todo, setTodo] = useState("");
   const [folder, setFolder] = useState("");
-
+  
   useEffect(() => {
     getFolders();
-    //setData(folders.map((folder) => folder.name));
-    console.log(foldersSelect)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
+  
   const submitTodo = (e) => {
     e.preventDefault();
     const newTodo = {

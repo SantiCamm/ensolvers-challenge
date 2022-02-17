@@ -15,8 +15,9 @@ const NewFolderInput = () => {
     addFolder(newFolder);
     setFolder("");
   };
+  
   return (
-    <>
+    <div>
       <form onSubmit={submitFolder} className="input">
         <TextInput
           label="Add a new folder"
@@ -44,7 +45,7 @@ const NewFolderInput = () => {
           +
         </Button>
       </form>
-    </>
+    </div>
   );
 };
 

@@ -6,7 +6,7 @@ const initialState = {
   todos: [],
   folders: [],
   isLoading: true,
-  authData: {},
+  authData: {success: false},
   foldersSelect: [],
 };
 
@@ -37,7 +37,6 @@ export const GlobalProvider = ({ children }) => {
   async function getFolders() {
     try {
       const folders = await api.fetchFolders();
-      console.log(folders.data.data);
       dispatch({
         type: "GET_FOLDERS",
         payload: folders.data.data,
@@ -76,7 +75,9 @@ export const GlobalProvider = ({ children }) => {
 
   async function getTodos() {
     try {
+      console.log("DALE BO")
       const todos = await api.fetchTodos();
+      console.log(todos.data.data)
       dispatch({
         type: "GET_TODOS",
         payload: todos.data.data,
@@ -104,12 +105,30 @@ export const GlobalProvider = ({ children }) => {
     }
   }
 
+  async function modifyTodo(todoId, todoText) {
+    try {
+      const res = await api.modifyTodo(todoId, todoText);
+      dispatch({ type: "MODIFY_TODO", payload: res.data.data });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   async function deleteTodo(todoId) {
     try {
       await api.deleteTodo(todoId);
       dispatch({ type: "DELETE_TODO", payload: todoId });
     } catch (error) {
       console.log(error);
+    }
+  }
+
+  async function completeTodo(todoId, completed) {
+    try {
+      const res = await api.completeTodo(todoId, completed);
+      dispatch({ type: "COMPLETE_TODO", payload: res.data.data });
+    } catch (error) {
+      
     }
   }
 
@@ -128,7 +147,9 @@ export const GlobalProvider = ({ children }) => {
         deleteFolder,
         getTodos,
         addTodo,
+        modifyTodo,
         deleteTodo,
+        completeTodo,
       }}
     >
       {children}

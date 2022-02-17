@@ -35,14 +35,16 @@ foldersAPI.interceptors.request.use((req) => {
 });
 
 //todosAPI
-export const fetchTodos = () => todosAPI.get("/todos")
+export const fetchTodos = () => todosAPI.get("/todos");
 export const addTodo = (todo, config) => todosAPI.post("/todos", todo, config);
-export const deleteTodo = (todoId) => todosAPI.delete(`/todos/${todoId}`)
+export const deleteTodo = (todoId) => todosAPI.delete(`/todos/${todoId}`);
+export const modifyTodo = (todoId, text) => todosAPI.post(`/todos/${todoId}`, {text});
+export const completeTodo = (todoId, completed) => todosAPI.post(`/todos/${todoId}/${completed}`);
 
 //foldersAPI
 export const fetchFolders = () => foldersAPI.get("/folders")
 export const addFolder = (folder, config) => foldersAPI.post("/folders", folder, config);
-export const deleteFolder = (folderId) => foldersAPI.delete(`/folders/${folderId}`)
+export const deleteFolder = (folderId) => foldersAPI.delete(`/folders/${folderId}`);
 
 //usersAPI
 export const googleLogin = (token) => usersAPI.post("/users/auth", token);
