@@ -1,43 +1,78 @@
-import { useContext, useEffect } from 'react';
-import { GlobalContext } from "../context/GlobalState"
-import { Accordion, Group, Loader, ScrollArea, Title } from '@mantine/core';
-import TodoItem from './TodoItem';
-import FolderItem from './FolderItem';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { useContext, useEffect } from "react";
+import { GlobalContext } from "../context/GlobalState";
+import { Accordion, Group, Loader, ScrollArea, Title } from "@mantine/core";
+import TodoItem from "./TodoItem";
+import FolderItem from "./FolderItem";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBan } from "@fortawesome/free-solid-svg-icons";
 
 const FolderList = () => {
-  const { getFolders, folders, isLoading} = useContext(GlobalContext);
+  const { getFolders, folders, isLoading, deleteFolder } =
+    useContext(GlobalContext);
 
   useEffect(() => {
     getFolders();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, []);
+
+  const handleDelete = (id) => {
+    deleteFolder(id);
+  };
 
   return (
-    <Group spacing="xs" position="center" styles={(theme) => ({
-      root: {
-        // overflow: "auto",
-        // height: "100%"
-      }
-    })}>
-      {!isLoading ?
-          <Accordion multiple styles={(theme) => ({
-            root: {
-              width: "100%",
-            }
-          })}>
-            {folders.map((folder) => (
-            <Accordion.Item label={folder.name} key={folder.id}>
-              {folder?.todos?.map((todo) => (<TodoItem key={todo.id} {...todo}/>))}
+    <Group
+      spacing="md"
+      // position="center"
+      styles={(theme) => ({
+        root: {
+          overflow: "hidden",
+          height: "100%",
+          borderRadius: "5px",
+          padding: "25px",
+          // display: "flex",
+          // flexDirection: "column",
+          gap: "10px",
+          width: "100%",
+          backgroundColor: "white"
+        }
+      })}
+    >
+      {!isLoading ? (
+        <Accordion
+          multiple
+          style={{
+            width: "100%"
+          }}
+        >
+          {folders?.map((folder) => (
+            <Accordion.Item
+              label={
+                <>
+                  <Title order={4}>{folder.name}</Title>
+                  <a
+                    style={{ cursor: "pointer" }}
+                    onClick={() => handleDelete(folder.id)}
+                  >
+                    <FontAwesomeIcon
+                      style={{ fontSize: "20px", color: "#474747" }}
+                      icon={faBan}
+                    />
+                  </a>
+                </>
+              }
+              key={folder.name}
+            >
+              {folder?.todos?.map((todo) => (
+                <TodoItem key={todo.id} {...todo} />
+              ))}
             </Accordion.Item>
-            ))}
-          </Accordion>
-        : <Loader color="gray" variant="bars" size="md" />
-      }
+          ))}
+        </Accordion>
+      ) : (
+        <Loader color="gray" variant="bars" size="md" />
+      )}
     </Group>
   );
-
-}
+};
 
 export default FolderList;

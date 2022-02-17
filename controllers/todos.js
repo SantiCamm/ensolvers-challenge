@@ -102,8 +102,6 @@ export const modifyTodo = async (req, res, next) => {
       select: { id: true, text: true, completed: true }
     });
 
-    console.log(modifiedTodo);
-
     return res.status(200).json({ data: { modifiedTodo } });
   } catch (error) {
     console.log(error);
@@ -117,16 +115,12 @@ export const completeTodo = async (req, res, next) => {
   const completedParam = req.params.completed;
   const completed = (completedParam === "true")
 
-  console.log(todoId, completed)
-
   try {
     const completedTodo = await prisma.todo.update({
       where: { id: parseInt(todoId)},
       data: { completed },
       select: { id: true, text: true, completed: true }
     });
-
-    console.log(completedTodo);
 
     return res.status(200).json({ data: {completedTodo} });
   } catch (error) {

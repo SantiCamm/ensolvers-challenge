@@ -13,11 +13,11 @@ const Todos = () => {
       {user && (
         <div className="wrapper">
           <div className="container">
-            <NewTodoInput />
+            {/* <NewTodoInput /> */}
             <NewFolderInput />
           </div>
           <div className="container">
-            <TodoList />
+            <FolderList />
           </div>
         </div>
       )}

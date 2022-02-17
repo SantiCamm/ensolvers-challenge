@@ -12,7 +12,7 @@ const Login = () => {
     const googleSuccess = (res) => {
       const token = res?.tokenId;
       googleLogin(token, navigate);
-      navigate("/todos")
+      // navigate("/")
     } 
 
     const googleFailure = () => {

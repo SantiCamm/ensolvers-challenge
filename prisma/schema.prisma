@@ -14,7 +14,7 @@ model Todo {
   updatedAt DateTime @updatedAt
   text      String   @db.VarChar(255)
   completed Boolean  @default(false)
-  folder    Folder   @relation(fields: [folderId], references: [id])
+  folder    Folder   @relation(fields: [folderId], references: [id], onDelete: Cascade)
   folderId  Int
   creator   User     @relation(fields: [creatorId], references: [id])
   creatorId String

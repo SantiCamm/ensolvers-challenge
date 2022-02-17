@@ -10,18 +10,25 @@ body {
     background-repeat: no-repeat;
 }
 
+.app {
+    height: 100vh;
+}
+
 .todosPage {
-    height: 92vh;
+    height: 100%;
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+    overflow: hidden;
+    padding: 50px;
 }
 
 .loginPage {
     background: linear-gradient(0deg, rgba(0, 128, 128, 1) 0%, rgba(117, 247, 231, 1) 100%);
     background-repeat: no-repeat;
-    height: 100vh;
+    /* height: 100%; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -29,20 +36,21 @@ body {
 }
 
 .wrapper {
-    gap: 10px;
+    gap: 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-height: 60%;
 }
 
 .container {
     width: 800px;
     height: 100%;
+    overflow: hidden;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    gap: 30px;
+    gap: 10px;
     /* background-color: white; */
 }
 

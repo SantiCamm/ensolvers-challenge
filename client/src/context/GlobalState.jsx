@@ -21,7 +21,7 @@ export const GlobalProvider = ({ children }) => {
         type: "GOOGLE_LOGIN",
         payload: googleUserData.data,
       });
-      navigate("/todos");
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
@@ -64,10 +64,10 @@ export const GlobalProvider = ({ children }) => {
     }
   }
 
-  async function deleteFolder(folder) {
+  async function deleteFolder(folderId) {
     try {
-      await api.deleteFolder(folder._id);
-      dispatch({ type: "DELETE_FOLDER", payload: folder });
+      await api.deleteFolder(folderId);
+      dispatch({ type: "DELETE_FOLDER", payload: folderId });
     } catch (error) {
       console.log(error);
     }
@@ -75,9 +75,7 @@ export const GlobalProvider = ({ children }) => {
 
   async function getTodos() {
     try {
-      console.log("DALE BO")
       const todos = await api.fetchTodos();
-      console.log(todos.data.data)
       dispatch({
         type: "GET_TODOS",
         payload: todos.data.data,

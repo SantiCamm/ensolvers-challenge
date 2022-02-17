@@ -11,7 +11,7 @@ import {
   Textarea
 } from "@mantine/core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faBan, faPen } from "@fortawesome/free-solid-svg-icons";
 
 const TodoItem = (todo) => {
   const [checked, setChecked] = useState(false);
@@ -41,44 +41,64 @@ const TodoItem = (todo) => {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          borderBottom: "1px solid #f3c2c2",
-          padding: "10px"
-        }
+          padding: "5px",
+
+          [`@media (max-width: ${760}px)`]: {
+            padding: "0px",
+            margin: "5px 0"
+          }
+        },
+        sm: {}
       })}
     >
-      <Group>
+      <Group style={{}}>
         <Checkbox
           checked={todo.completed}
           onChange={(e) => handleCompleted(e.currentTarget.checked, todo.id)}
         ></Checkbox>
         <Title order={5}>{todo.text}</Title>
       </Group>
-      <Popover
-        opened={opened}
-        onClose={() => setOpened(false)}
-        target={<Button onClick={() => setOpened((o) => !o)}>Edit</Button>}
-        width={260}
-        position="bottom"
-        withArrow
-      >
-        <div style={{ display: "flex" }}>
-          <Text size="sm">
+      <Group>
+        <Popover
+          opened={opened}
+          onClose={() => setOpened(false)}
+          target={
+            <a
+              style={{ cursor: "pointer" }}
+              onClick={() => setOpened((o) => !o)}
+            >
+              <FontAwesomeIcon
+                style={{ fontSize: "20px", color: "#474747" }}
+                icon={faPen}
+              />
+            </a>
+          }
+          width={260}
+          position="bottom"
+          withArrow
+          withCloseButton
+          position="top"
+        >
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: "15px" }}
+          >
             <Textarea
               label="Edit to do"
               placeholder={todo.text}
               value={toDoText}
               onChange={(e) => setToDoText(e.currentTarget.value)}
             ></Textarea>
-            <Button onClick={() => handleSave(todo.id)}>Save</Button>
-            <Button>Cancel</Button>
-          </Text>
-        </div>
-      </Popover>
+            <Button color="green" onClick={() => handleSave(todo.id)}>
+              Save
+            </Button>
+          </div>
+        </Popover>
 
-      <a style={{ cursor: "pointer" }} onClick={() => handleDelete(todo.id)}>
-        <Button>Delete</Button>
-        {/* <FontAwesomeIcon style={{ fontSize: "20px", color: "#474747" }} icon={faTrash} /> */}
-      </a>
+        <a style={{ cursor: "pointer" }} onClick={() => handleDelete(todo.id)}>
+          {/* <Button color="red">Delete</Button> */}
+          <FontAwesomeIcon style={{ fontSize: "20px", color: "#474747" }} icon={faBan} />
+        </a>
+      </Group>
     </Container>
   );
 };

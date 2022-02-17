@@ -8,10 +8,10 @@ const reducer = (state, action) => {
         foldersSelect: action.payload.map((folder) => folder.name)
       };
     case "ADD_FOLDER":
-      console.log(action.payload);
+      const {newFolder} = action.payload
       return {
         ...state,
-        folders: [...state.folders, action.payload],
+        folders: [...state.folders, newFolder],
         foldersSelect: [...state.foldersSelect, action.payload]
       };
     case "DELETE_FOLDER":
@@ -23,13 +23,13 @@ const reducer = (state, action) => {
         todos: state.todos.filter((todo) => todo.folder !== action.payload.name)
       };
     case "GET_TODOS":
-      console.log("BOCAA");
       return { ...state, todos: action.payload, isLoading: false };
     case "ADD_TODO":
+      const {newTodo} = action.payload
       return {
         ...state,
-        todos: [...state.todos, action.payload.newTodo],
-        folders: [...state.folders, action.payload.folders]
+        todos: [...state.todos, newTodo],
+        // folders: [...state.folders, state.folders.map((folder) => folder.name === newTodo.folder ? [...folder.todos, newTodo.text] : [...folder.todos])]
       };
     case "DELETE_TODO":
       return {
