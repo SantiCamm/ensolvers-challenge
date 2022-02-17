@@ -19,6 +19,21 @@ todosAPI.interceptors.request.use((req) => {
       return req;
 });
 
+foldersAPI.interceptors.request.use((req) => {
+  const data = JSON.parse(localStorage.getItem("profile"));
+
+  if(!req?.headers) {
+      throw new Error(`Expected 'req' and 'req.headers' not to be undefined`);
+  }
+  
+    if (data.token) {
+      req.headers.authorization = `Bearer ${
+        data.token
+      }`;
+    }
+    return req;
+});
+
 //todosAPI
 export const fetchTodos = () => todosAPI.get("/todos")
 export const addTodo = (todo, config) => todosAPI.post("/todos", todo, config);

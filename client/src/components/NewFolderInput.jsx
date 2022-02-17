@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { Button, Select, TextInput } from "@mantine/core";
+import { GlobalContext } from "../context/GlobalState";
 
 const NewFolderInput = () => {
   const { addFolder } = useContext(GlobalContext);
   const [folder, setFolder] = useState("");
 
-  const submitFolder = () => {
+  const submitFolder = (e) => {
+    e.preventDefault();
     const newFolder = {
-      name: folder,
-      todos: [],
+      name: folder
     };
 
     addFolder(newFolder);
@@ -21,7 +23,7 @@ const NewFolderInput = () => {
           variant="filled"
           placeholder="Work"
           value={folder}
-          onChange={() => {
+          onChange={(e) => {
             setFolder(e.currentTarget.value);
           }}
         />

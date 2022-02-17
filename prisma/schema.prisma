@@ -3,8 +3,8 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
   shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
@@ -12,16 +12,26 @@ model Todo {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  text     String   @db.VarChar(255)
-  folder     String   @db.VarChar(255)
+  text      String   @db.VarChar(255)
   completed Boolean  @default(false)
-  creator    User     @relation(fields: [creatorId], references: [id])
-  creatorId  Int
+  folder    Folder   @relation(fields: [folderId], references: [id])
+  folderId  Int
+  creator   User     @relation(fields: [creatorId], references: [id])
+  creatorId String
 }
 
 model User {
-  id      Int      @id @default(autoincrement())
+  id      String   @id @db.VarChar(255)
   email   String   @unique
   name    String?
   todos   Todo[]
+  folders Folder[]
+}
+
+model Folder {
+  id        Int    @id @default(autoincrement())
+  name      String @unique @db.VarChar(255)
+  todos     Todo[]
+  creator   User   @relation(fields: [creatorId], references: [id])
+  creatorId String
 }

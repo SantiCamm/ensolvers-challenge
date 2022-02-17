@@ -1,18 +1,25 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Button, Select, TextInput } from "@mantine/core";
+import { Button, Loader, Select, TextInput } from "@mantine/core";
 import { GlobalContext } from "../context/GlobalState";
 
 const NewTodoInput = () => {
-  const { addTodo } = useContext(GlobalContext);
+  const { addTodo, getFolders, foldersSelect, isLoading } = useContext(GlobalContext);
   const [todo, setTodo] = useState("");
   const [folder, setFolder] = useState("");
 
-  const submitTodo = () => {
+  useEffect(() => {
+    getFolders();
+    //setData(folders.map((folder) => folder.name));
+    console.log(foldersSelect)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const submitTodo = (e) => {
     e.preventDefault();
     const newTodo = {
       text: todo,
       completed: false,
-      folder,
+      folder
     };
 
     addTodo(newTodo);
@@ -22,34 +29,50 @@ const NewTodoInput = () => {
 
   return (
     <div>
-      <form onSubmit={submitTodo} className="input">
-        <TextInput
-          label="Add a Todo"
-          variant="filled"
-          placeholder="Take out the trash"
-          value={todo}
-          onChange={() => {
-            setTodo(e.currentTarget.value);
-          }}
-        />
-        <Select />
-        <Button
-          variant="light"
-          color="teal"
-          type="submit"
-          size="sm"
-          styles={(theme) => ({
-            root: {
-              width: 45,
-              padding: 0,
-              alignSelf: "flex-end",
-            },
-          })}
-          {...(!todo && { disabled: true })}
-        >
-          +
-        </Button>
-      </form>
+      {!isLoading ? (
+        <form onSubmit={submitTodo} className="input">
+          <TextInput
+            label="Add a Todo"
+            variant="filled"
+            required
+            placeholder="Take out the trash"
+            value={todo}
+            onChange={(e) => {
+              setTodo(e.currentTarget.value);
+            }}
+          />
+          <Select
+            data={foldersSelect}
+            label="Folder"
+            variant="filled"
+            placeholder="Select a folder"
+            nothingFound="Nothing found"
+            clearable
+            // searchable
+            required
+            value={folder}
+            onChange={(e) => setFolder(e)}
+          />
+          <Button
+            variant="light"
+            color="teal"
+            type="submit"
+            size="sm"
+            styles={(theme) => ({
+              root: {
+                width: 45,
+                padding: 0,
+                alignSelf: "flex-end"
+              }
+            })}
+            {...(!todo && !folder && { disabled: true })}
+          >
+            +
+          </Button>
+        </form>
+      ) : (
+        <Loader color="gray" variant="bars" size="md" />
+      )}
     </div>
   );
 };

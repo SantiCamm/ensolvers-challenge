@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from "react-router";
+import React, { createContext, useReducer } from "react";
 import GlobalReducer from "./GlobalReducer";
 import * as api from "../api";
 
@@ -7,6 +7,7 @@ const initialState = {
   folders: [],
   isLoading: true,
   authData: {},
+  foldersSelect: [],
 };
 
 export const GlobalContext = createContext(initialState);
@@ -35,7 +36,8 @@ export const GlobalProvider = ({ children }) => {
 
   async function getFolders() {
     try {
-      const folders = await api.fetchTodos();
+      const folders = await api.fetchFolders();
+      console.log(folders.data.data);
       dispatch({
         type: "GET_FOLDERS",
         payload: folders.data.data,
@@ -53,7 +55,7 @@ export const GlobalProvider = ({ children }) => {
         },
       };
 
-      const res = await api.addFolder(todo, config);
+      const res = await api.addFolder(folder, config);
       dispatch({
         type: "ADD_FOLDER",
         payload: res.data.data,
@@ -114,7 +116,11 @@ export const GlobalProvider = ({ children }) => {
   return (
     <GlobalContext.Provider
       value={{
-        state,
+        todos: state.todos,
+        folders: state.folders,
+        isLoading: state.isLoading,
+        authData: state.authData,
+        foldersSelect: state.foldersSelect,
         googleLogin,
         logout,
         getFolders,

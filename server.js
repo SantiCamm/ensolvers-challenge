@@ -20,7 +20,7 @@ if (process.env.NODE_ENV === "development") {
     app.use(morgan("dev"));
 }
 
-app.use("/folders", users);
+app.use("/folders", folders);
 app.use("/todos", todos);
 app.use("/users", users);
 

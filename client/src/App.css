@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    background: linear-gradient(0deg, rgba(0, 128, 128, 1) 0%, rgba(117, 247, 231, 1) 100%);
+    background-repeat: no-repeat;
+}
+
+.todosPage {
+    height: 92vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginPage {
+    background: linear-gradient(0deg, rgba(0, 128, 128, 1) 0%, rgba(117, 247, 231, 1) 100%);
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-height: 60%;
+}
+
+.container {
+    width: 600px;
+    height: 100%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 25px;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.header {
+    /* position: sticky; */
+    width: 100%;
+    height: 8vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 800px) {
+    .container {
+        width: 350px;
+    }
+    .avatar {
+        display: none;
+    }
+    .app-name {
+        display: none;
+    }
+}

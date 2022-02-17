@@ -1,15 +1,15 @@
 import express from "express";
 import { getTodos, addTodo, deleteTodo } from "../controllers/todos.js";
-//import auth from "../middleware/auth"
+import auth from "../middleware/auth.js"
 
 const router = express.Router();
 router
     .route("/")
-    .get(getTodos)
-    .post(addTodo)
+    .get(auth, getTodos)
+    .post(auth, addTodo)
 
 router
     .route("/:id")
-    .delete(deleteTodo)
+    .delete(auth, deleteTodo)
 
 export default router;
