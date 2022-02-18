@@ -96,7 +96,7 @@ export const modifyTodo = async (req, res, next) => {
     const modifiedTodo = await prisma.todo.update({
       where: { id: parseInt(todoId) },
       data: { text },
-      select: { id: true, text: true, completed: true }
+      select: { id: true, text: true, completed: true, folderId: true }
     });
 
     return res.status(200).json({ data: { modifiedTodo } });

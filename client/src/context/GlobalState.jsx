@@ -66,8 +66,8 @@ export const GlobalProvider = ({ children }) => {
 
   async function deleteFolder(folderId) {
     try {
-      await api.deleteFolder(folderId);
-      dispatch({ type: "DELETE_FOLDER", payload: folderId });
+      const res = await api.deleteFolder(folderId);
+      dispatch({ type: "DELETE_FOLDER", payload: res.data.data });
     } catch (error) {
       console.log(error);
     }

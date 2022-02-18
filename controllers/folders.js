@@ -50,11 +50,12 @@ export const deleteFolder = async (req, res, next) => {
   const folderId = req.params.id;
 
   try {
-    const folder = await prisma.folder.delete({
-      where: { id: parseInt(folderId) }
+    const deletedFolder = await prisma.folder.delete({
+      where: { id: parseInt(folderId) },
+      select: {id: true, name: true}
     });
 
-    res.status(200).json({ data: "Folder deleted succesfully" });
+    res.status(200).json({ data: {deletedFolder}});
     // console.log(folder);
   } catch (error) {
     console.log(error);

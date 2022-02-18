@@ -25,7 +25,7 @@ const FolderList = () => {
       styles={(theme) => ({
         root: {
           overflow: "auto",
-          height: "300px",
+          maxHeight: "300px",
           borderRadius: "5px",
           padding: "25px",
           // display: "flex",

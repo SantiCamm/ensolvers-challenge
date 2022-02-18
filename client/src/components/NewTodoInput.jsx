@@ -31,7 +31,7 @@ const NewTodoInput = () => {
       {!isLoading ? (
         <form onSubmit={submitTodo} className="input">
           <TextInput
-            label="Add a Todo"
+            label="Add a to-do"
             variant="filled"
             required
             placeholder="Take out the trash"

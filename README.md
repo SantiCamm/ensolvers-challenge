@@ -13,6 +13,7 @@ Heroku app: https://ensolvers-challenge.herokuapp.com/
 
 
 ## Usage
+In the root folder, type **npm install** in order to install all the dependencies necessary.
 Once the app is installed, navigate to http://localhost:3000 in order to use the app.
 
 ## 🛠️ Built-in 
@@ -27,11 +28,12 @@ Once the app is installed, navigate to http://localhost:3000 in order to use the
 * Prisma 3.9.2
 
 ## Notes
-* For development purposes, the folder's name is an unique field in the database, across all users. This shouldn't be like this, as it's a better and more robust practice to work with the folder id.
-* The app might benefit from some testing, as I didn't have the time to properly do it. I would use Jest for Unit Testing and 
-Cypress for end-to-end testing.
-* The app might also benefit from a custom error management, in both front and back-end.
+* For development purposes, the folder's name is a unique field in the database, across all users. Because of this, if we create a folder with the same name as an existing one, the server will throw an error.  
+
+## Future improvements
+* Custom error management, in both front and back-end. This will handle server errors and notify the user of them.
+* Testing. Jest for Unit Testing and Cypress for end-to-end testing.
 
 ## ✍️ Author 
 
-* **Santiago Cammarano** - [SantiCamm](https://github.com/SantiCamm)
+**Santiago Cammarano** - [SantiCamm](https://github.com/SantiCamm)

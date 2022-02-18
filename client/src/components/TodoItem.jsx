@@ -29,6 +29,7 @@ const TodoItem = (todo) => {
 
   const handleSave = (id) => {
     modifyTodo(id, toDoText);
+    setOpened(false);
   };
 
   return (
@@ -92,7 +93,11 @@ const TodoItem = (todo) => {
           </div>
         </Popover>
 
-        <a href="/#" style={{ cursor: "pointer" }} onClick={() => handleDelete(todo.id)}>
+        <a
+          href="/#"
+          style={{ cursor: "pointer" }}
+          onClick={() => handleDelete(todo.id)}
+        >
           {/* <Button color="red">Delete</Button> */}
           <FontAwesomeIcon
             style={{ fontSize: "20px", color: "#474747" }}
