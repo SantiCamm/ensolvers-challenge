@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    background: linear-gradient(0deg, rgba(0, 128, 128, 1) 0%, rgba(117, 247, 231, 1) 100%);
+    background-repeat: no-repeat;
+}
+
+.app {
+    height: 92vh;
+}
+
+.todosPage {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.loginPage {
+    height: 100vh;
+    background: linear-gradient(0deg, rgba(0, 128, 128, 1) 0%, rgba(117, 247, 231, 1) 100%);
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper {
+    gap: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 800px;
+    /* height: 100%; */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    /* background-color: white; */
+}
+
+.input {
+    border-radius: 5px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    background-color: white;
+}
+
+.header {
+    position: sticky;
+    width: 100%;
+    height: 8vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 800px) {
+    .container {
+        width: 350px;
+    }
+    .avatar {
+        display: none;
+    }
+    .app-name {
+        display: none;
+    }
+}
