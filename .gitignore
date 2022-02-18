@@ -5,15 +5,14 @@
 node_modules/
 /.pnp
 .pnp.js
-package.json
-**/package.json
+# package.json
+# **/package.json
 
 # testing
 /coverage
 
 # production
 /build
-build/
 
 # misc
 .DS_Store
