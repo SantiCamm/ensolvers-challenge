@@ -1,6 +1,6 @@
 import { useContext} from 'react';
 import { GlobalContext } from '../context/GlobalState'
-import { Container, Group, Image, Title } from '@mantine/core';
+import { Group, Image, Title } from '@mantine/core';
 import Logo from "../images/logoteal.png"
 import { GoogleLogin } from 'react-google-login';
 import { useNavigate } from "react-router-dom"

@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Button, Select, TextInput } from "@mantine/core";
+import React, { useContext, useState } from "react";
+import { Button, TextInput } from "@mantine/core";
 import { GlobalContext } from "../context/GlobalState";
 
 const NewFolderInput = () => {

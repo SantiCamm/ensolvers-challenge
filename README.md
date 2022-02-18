@@ -12,7 +12,8 @@ Project made for [Ensolvers](https://www.ensolvers.com/) coding challenge.
 Heroku app: https://ensolvers-challenge.herokuapp.com/
 
 ## Pre-requisites
-* npm >= 14.17.3
+* Node.JS 14.17.3
+* npm >= 8.5.0
 
 ## Installation and usage
 Bash terminal (Linux or macOS)

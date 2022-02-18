@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Avatar, Button, Group, Navbar, Title } from "@mantine/core"
+import { Avatar, Button, Group, Title } from "@mantine/core"
 import { GoogleLogout } from "react-google-login";
 import Logo from "../images/logo.png";
 import { GlobalContext } from '../context/GlobalState';
