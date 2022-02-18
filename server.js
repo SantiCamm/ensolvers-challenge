@@ -24,6 +24,17 @@ app.use("/folders", folders);
 app.use("/todos", todos);
 app.use("/users", users);
 
+if (process.env.NODE_ENV === "production") {
+
+  // We make our build folder the static folder
+  app.use(express.static('client/build'));
+
+  // Each request (except our api routes) will load the index.html file
+app.get('*', (req, res) =>
+  res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+);
+}
+
 app.listen(PORT, () =>
   console.log(
     `Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.cyan.bold
