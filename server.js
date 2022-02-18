@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import colors from "colors"
 import path from "path"
+import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import todos from "./routes/todos.js";
 import users from "./routes/users.js";
@@ -26,6 +27,7 @@ app.use("/folders", folders);
 app.use("/todos", todos);
 app.use("/users", users);
 
+const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 if (process.env.NODE_ENV === "production") {
