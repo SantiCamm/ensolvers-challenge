@@ -1,8 +1,12 @@
 import axios from 'axios'
 
-const todosAPI = axios.create({baseURL: "http://localhost:5000"})
-const foldersAPI = axios.create({baseURL: "http://localhost:5000"})
-const usersAPI = axios.create({baseURL: "http://localhost:5000"})
+// const todosAPI = axios.create({baseURL: "http://localhost:5000"})
+// const foldersAPI = axios.create({baseURL: "http://localhost:5000"})
+// const usersAPI = axios.create({baseURL: "http://localhost:5000"})
+
+const todosAPI = axios.create()
+const foldersAPI = axios.create()
+const usersAPI = axios.create()
 
 todosAPI.interceptors.request.use((req) => {
     const data = JSON.parse(localStorage.getItem("profile"));
