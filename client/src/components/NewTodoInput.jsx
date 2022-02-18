@@ -1,17 +1,18 @@
-import React, { useContext, useEffect, useState, useRef } from "react";
-import { Button, Loader, Select, TextInput } from "@mantine/core";
+import { useContext, useEffect, useState } from "react";
+import { Button, Loader, Select, TextInput, Group } from "@mantine/core";
 import { GlobalContext } from "../context/GlobalState";
 
 const NewTodoInput = () => {
-  const { addTodo, getFolders, isLoading, foldersSelect } = useContext(GlobalContext);
+  const { addTodo, getFolders, isLoading, foldersSelect } =
+    useContext(GlobalContext);
   const [todo, setTodo] = useState("");
   const [folder, setFolder] = useState("");
-  
+
   useEffect(() => {
     getFolders();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  
+
   const submitTodo = (e) => {
     e.preventDefault();
     const newTodo = {
@@ -26,7 +27,7 @@ const NewTodoInput = () => {
   };
 
   return (
-    <div>
+    <Group position="center">
       {!isLoading ? (
         <form onSubmit={submitTodo} className="input">
           <TextInput
@@ -69,9 +70,9 @@ const NewTodoInput = () => {
           </Button>
         </form>
       ) : (
-        <Loader color="gray" variant="bars" size="md" />
+        <Loader color="white" variant="bars" size="md" />
       )}
-    </div>
+    </Group>
   );
 };
 

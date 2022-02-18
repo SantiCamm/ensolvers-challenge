@@ -8,7 +8,7 @@ const reducer = (state, action) => {
         foldersSelect: action.payload.map((folder) => folder.name)
       };
     case "ADD_FOLDER":
-      const {newFolder} = action.payload
+      const { newFolder } = action.payload;
       return {
         ...state,
         folders: [...state.folders, newFolder],
@@ -18,23 +18,33 @@ const reducer = (state, action) => {
       return {
         ...state,
         folders: state.folders.filter(
-          (folder) => folder.id !== action.payload.id
+          (folder) => folder.id !== action.payload
         ),
         todos: state.todos.filter((todo) => todo.folder !== action.payload.name)
       };
     case "GET_TODOS":
       return { ...state, todos: action.payload, isLoading: false };
     case "ADD_TODO":
-      const {newTodo} = action.payload
+      const { newTodo } = action.payload;
       return {
         ...state,
         todos: [...state.todos, newTodo],
-        // folders: [...state.folders, state.folders.map((folder) => folder.name === newTodo.folder ? [...folder.todos, newTodo.text] : [...folder.todos])]
+        folders: state.folders.map((folder) =>
+          folder.id === newTodo.folderId
+            ? { ...folder, todos: [...folder.todos, newTodo] }
+            : folder
+        )
       };
     case "DELETE_TODO":
+      const { deletedTodo } = action.payload;
       return {
         ...state,
-        todos: state.todos.filter((todo) => todo.id !== action.payload)
+        todos: state.todos.filter((todo) => todo.id !== action.payload),
+        folders: state.folders.map((folder) =>
+          folder.id === deletedTodo.folderId
+            ? { ...folder, todos: state.todos.filter((todo) => deletedTodo.id !== todo.id) }
+            : folder
+        )
       };
     case "MODIFY_TODO":
       const { modifiedTodo } = action.payload;

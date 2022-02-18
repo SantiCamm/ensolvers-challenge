@@ -114,8 +114,8 @@ export const GlobalProvider = ({ children }) => {
 
   async function deleteTodo(todoId) {
     try {
-      await api.deleteTodo(todoId);
-      dispatch({ type: "DELETE_TODO", payload: todoId });
+      const res = await api.deleteTodo(todoId);
+      dispatch({ type: "DELETE_TODO", payload: res.data.data });
     } catch (error) {
       console.log(error);
     }

@@ -7,7 +7,6 @@ import {
   Title,
   Popover,
   Button,
-  Text,
   Textarea
 } from "@mantine/core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -20,13 +19,12 @@ const TodoItem = (todo) => {
   const [toDoText, setToDoText] = useState(todo.text);
 
   const handleDelete = (id) => {
-    console.log(id);
     deleteTodo(id);
   };
 
   const handleCompleted = (completed, id) => {
     setChecked(completed);
-    completeTodo(id, completed);
+    completeTodo(id, checked);
   };
 
   const handleSave = (id) => {
@@ -66,6 +64,7 @@ const TodoItem = (todo) => {
             <a
               style={{ cursor: "pointer" }}
               onClick={() => setOpened((o) => !o)}
+              href="/#"
             >
               <FontAwesomeIcon
                 style={{ fontSize: "20px", color: "#474747" }}
@@ -74,7 +73,6 @@ const TodoItem = (todo) => {
             </a>
           }
           width={260}
-          position="bottom"
           withArrow
           withCloseButton
           position="top"
@@ -94,9 +92,12 @@ const TodoItem = (todo) => {
           </div>
         </Popover>
 
-        <a style={{ cursor: "pointer" }} onClick={() => handleDelete(todo.id)}>
+        <a href="/#" style={{ cursor: "pointer" }} onClick={() => handleDelete(todo.id)}>
           {/* <Button color="red">Delete</Button> */}
-          <FontAwesomeIcon style={{ fontSize: "20px", color: "#474747" }} icon={faBan} />
+          <FontAwesomeIcon
+            style={{ fontSize: "20px", color: "#474747" }}
+            icon={faBan}
+          />
         </a>
       </Group>
     </Container>

@@ -1,8 +1,5 @@
-import { useContext, useEffect } from "react";
-import { GlobalContext } from "../context/GlobalState";
 import NewTodoInput from "../components/NewTodoInput";
 import NewFolderInput from "../components/NewFolderInput";
-import TodoList from "../components/TodoList";
 import FolderList from "../components/FolderList";
 
 const Todos = () => {
@@ -13,7 +10,7 @@ const Todos = () => {
       {user && (
         <div className="wrapper">
           <div className="container">
-            {/* <NewTodoInput /> */}
+            <NewTodoInput />
             <NewFolderInput />
           </div>
           <div className="container">

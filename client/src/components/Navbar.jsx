@@ -24,7 +24,7 @@ const NavBar = () => {
       <div>
         <Avatar radius="xl" src={Logo} alt="Logo"/>
       </div>
-      <Title order={2} style={{ color: "#fff" }} className="app-name">Expense Tracker</Title>
+      <Title order={2} style={{ color: "#fff" }} className="app-name">TO-DO</Title>
       <Group>
         <Avatar
           alt={user?.result?.sub}

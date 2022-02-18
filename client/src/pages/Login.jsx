@@ -1,7 +1,7 @@
 import { useContext} from 'react';
 import { GlobalContext } from '../context/GlobalState'
 import { Container, Group, Image, Title } from '@mantine/core';
-import Logo from "../images/logo.png"
+import Logo from "../images/logoteal.png"
 import { GoogleLogin } from 'react-google-login';
 import { useNavigate } from "react-router-dom"
 
@@ -38,7 +38,7 @@ const Login = () => {
           })}>
             <div>
               <Image alt="Logo" src={Logo} width={100} withPlaceholder />
-              <Title order={1}>TODOS</Title >
+              <Title order={1} style={{color: "gray"}}>TO-DO</Title >
             </div>
             <GoogleLogin
               clientId={process.env.REACT_APP_CLIENT_ID}

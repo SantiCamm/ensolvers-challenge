@@ -1,8 +1,7 @@
 import { useContext, useEffect } from "react";
 import { GlobalContext } from "../context/GlobalState";
-import { Accordion, Group, Loader, ScrollArea, Title } from "@mantine/core";
+import { Accordion, Group, Loader, Title } from "@mantine/core";
 import TodoItem from "./TodoItem";
-import FolderItem from "./FolderItem";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBan } from "@fortawesome/free-solid-svg-icons";
 
@@ -22,11 +21,11 @@ const FolderList = () => {
   return (
     <Group
       spacing="md"
-      // position="center"
+      position="center"
       styles={(theme) => ({
         root: {
-          overflow: "hidden",
-          height: "100%",
+          overflow: "auto",
+          height: "300px",
           borderRadius: "5px",
           padding: "25px",
           // display: "flex",
@@ -39,6 +38,7 @@ const FolderList = () => {
     >
       {!isLoading ? (
         <Accordion
+          disableIconRotation
           multiple
           style={{
             width: "100%"
@@ -47,18 +47,25 @@ const FolderList = () => {
           {folders?.map((folder) => (
             <Accordion.Item
               label={
-                <>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center"
+                  }}
+                >
                   <Title order={4}>{folder.name}</Title>
                   <a
                     style={{ cursor: "pointer" }}
                     onClick={() => handleDelete(folder.id)}
+                    href="/#"
                   >
                     <FontAwesomeIcon
                       style={{ fontSize: "20px", color: "#474747" }}
                       icon={faBan}
                     />
                   </a>
-                </>
+                </div>
               }
               key={folder.name}
             >
