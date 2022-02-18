@@ -14,7 +14,7 @@ Heroku app: https://ensolvers-challenge.herokuapp.com/
 
 ## Usage
 In the root folder, type **npm install** in order to install all the dependencies necessary.
-Once the app is installed, navigate to http://localhost:3000 in order to use the app.
+Once the app is installed, type **npm run dev** and navigate to http://localhost:3000 in order to use the app.
 
 ## 🛠️ Built-in 
 ### 💅 Front-end
