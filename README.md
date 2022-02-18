@@ -23,6 +23,11 @@ bash run.sh
 
 The script will install all the necessary dependencies and run the app.
 
+If you need to run the app after installing the dependencies:
+```bash
+npm run dev
+```
+
 ## 🛠️ Built-in 
 ### 💅 Front-end
 * ReactJS 17.0.2

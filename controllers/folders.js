@@ -56,7 +56,6 @@ export const deleteFolder = async (req, res, next) => {
     });
 
     res.status(200).json({ data: {deletedFolder}});
-    // console.log(folder);
   } catch (error) {
     console.log(error);
   }

@@ -118,8 +118,6 @@ export const completeTodo = async (req, res, next) => {
       select: { id: true, text: true, completed: true, folderId: true  }
     });
 
-    console.log(completedTodo)
-
     return res.status(200).json({ data: { completedTodo } });
   } catch (error) {
     console.log(error);
