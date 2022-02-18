@@ -76,7 +76,15 @@ const reducer = (state, action) => {
         ...state,
         todos: state.todos.map((todo) =>
           todo.id === completedTodo.id ? completedTodo : todo
-        )
+        ),
+        folders: state.folders.map((folder) =>
+        folder.id === completedTodo.folderId
+          ? {
+              ...folder,
+              todos: folder.todos.map((todo) => todo.id === completedTodo.id ? completedTodo : todo)
+            }
+          : folder
+      )
       };
 
     case "GOOGLE_LOGIN":

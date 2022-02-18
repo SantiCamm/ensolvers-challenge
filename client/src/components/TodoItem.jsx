@@ -13,7 +13,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBan, faPen } from "@fortawesome/free-solid-svg-icons";
 
 const TodoItem = (todo) => {
-  const [checked, setChecked] = useState(false);
   const { deleteTodo, modifyTodo, completeTodo } = useContext(GlobalContext);
   const [opened, setOpened] = useState(false);
   const [toDoText, setToDoText] = useState(todo.text);
@@ -23,8 +22,7 @@ const TodoItem = (todo) => {
   };
 
   const handleCompleted = (completed, id) => {
-    setChecked(completed);
-    completeTodo(id, checked);
+    completeTodo(id, completed);
   };
 
   const handleSave = (id) => {
