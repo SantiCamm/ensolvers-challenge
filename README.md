@@ -11,9 +11,16 @@ Project made for [Ensolvers](https://www.ensolvers.com/) coding challenge.
 
 Heroku app: https://ensolvers-challenge.herokuapp.com/
 
+## Pre-requisites
+* npm >= 14.17.3
 
-## Usage
-In the root folder, run the bash script **run.sh**, which will install all the necessary dependencies and run the app.
+## Installation and usage
+Bash terminal (Linux or macOS)
+```bash
+bash run.sh
+```
+
+The script will install all the necessary dependencies and run the app.
 
 ## 🛠️ Built-in 
 ### 💅 Front-end
