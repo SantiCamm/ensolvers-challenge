@@ -7,7 +7,7 @@ const Todos = () => {
 
   return (
     <div className="todosPage">
-      {user && (
+      {!user && (
         <div className="wrapper">
           <div className="container">
             <NewTodoInput />

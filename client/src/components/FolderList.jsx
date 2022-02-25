@@ -58,7 +58,7 @@ const FolderList = () => {
                   <a
                     style={{ cursor: "pointer" }}
                     onClick={() => handleDelete(folder.id)}
-                    href="/#"
+                    
                   >
                     <FontAwesomeIcon
                       style={{ fontSize: "20px", color: "#474747" }}

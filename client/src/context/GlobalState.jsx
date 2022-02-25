@@ -39,7 +39,7 @@ export const GlobalProvider = ({ children }) => {
       const folders = await api.fetchFolders();
       dispatch({
         type: "GET_FOLDERS",
-        payload: folders.data.data,
+        payload: folders.data,
       });
     } catch (error) {
       console.log(error);
@@ -57,7 +57,7 @@ export const GlobalProvider = ({ children }) => {
       const res = await api.addFolder(folder, config);
       dispatch({
         type: "ADD_FOLDER",
-        payload: res.data.data,
+        payload: res.data,
       });
     } catch (error) {
       console.log(error);
@@ -67,7 +67,7 @@ export const GlobalProvider = ({ children }) => {
   async function deleteFolder(folderId) {
     try {
       const res = await api.deleteFolder(folderId);
-      dispatch({ type: "DELETE_FOLDER", payload: res.data.data });
+      dispatch({ type: "DELETE_FOLDER", payload: res.data });
     } catch (error) {
       console.log(error);
     }
@@ -78,7 +78,7 @@ export const GlobalProvider = ({ children }) => {
       const todos = await api.fetchTodos();
       dispatch({
         type: "GET_TODOS",
-        payload: todos.data.data,
+        payload: todos.data,
       });
     } catch (error) {
       console.log(error);
@@ -96,17 +96,17 @@ export const GlobalProvider = ({ children }) => {
       const res = await api.addTodo(todo, config);
       dispatch({
         type: "ADD_TODO",
-        payload: res.data.data,
+        payload: res.data,
       });
     } catch (error) {
       console.log(error);
     }
   }
 
-  async function modifyTodo(todoId, todoText) {
+  async function modifyTodo(todoId, modifiedTodo) {
     try {
-      const res = await api.modifyTodo(todoId, todoText);
-      dispatch({ type: "MODIFY_TODO", payload: res.data.data });
+      const res = await api.modifyTodo(todoId, modifiedTodo);
+      dispatch({ type: "MODIFY_TODO", payload: res.data });
     } catch (error) {
       console.log(error);
     }
@@ -115,20 +115,20 @@ export const GlobalProvider = ({ children }) => {
   async function deleteTodo(todoId) {
     try {
       const res = await api.deleteTodo(todoId);
-      dispatch({ type: "DELETE_TODO", payload: res.data.data });
+      dispatch({ type: "DELETE_TODO", payload: res.data });
     } catch (error) {
       console.log(error);
     }
   }
 
-  async function completeTodo(todoId, completed) {
-    try {
-      const res = await api.completeTodo(todoId, completed);
-      dispatch({ type: "COMPLETE_TODO", payload: res.data.data });
-    } catch (error) {
+  // async function completeTodo(todoId, completed) {
+  //   try {
+  //     const res = await api.completeTodo(todoId, completed);
+  //     dispatch({ type: "COMPLETE_TODO", payload: res.data });
+  //   } catch (error) {
       
-    }
-  }
+  //   }
+  // }
 
   return (
     <GlobalContext.Provider
@@ -147,7 +147,6 @@ export const GlobalProvider = ({ children }) => {
         addTodo,
         modifyTodo,
         deleteTodo,
-        completeTodo,
       }}
     >
       {children}

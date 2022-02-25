@@ -3,10 +3,10 @@ import { Button, Loader, Select, TextInput, Group } from "@mantine/core";
 import { GlobalContext } from "../context/GlobalState";
 
 const NewTodoInput = () => {
-  const { addTodo, getFolders, isLoading, foldersSelect } =
+  const { addTodo, getFolders, folders, isLoading, foldersSelect } =
     useContext(GlobalContext);
   const [todo, setTodo] = useState("");
-  const [folder, setFolder] = useState("");
+  const [selectedFolder, setSelectedFolder] = useState("");
 
   useEffect(() => {
     getFolders();
@@ -15,10 +15,15 @@ const NewTodoInput = () => {
 
   const submitTodo = (e) => {
     e.preventDefault();
+    const folderFound = folders.find(
+      (folder) => folder.name === selectedFolder
+    );
+    const folderId = folderFound.id;
+
     const newTodo = {
       text: todo,
       completed: false,
-      folder
+      folderId
     };
 
     addTodo(newTodo);
@@ -49,8 +54,8 @@ const NewTodoInput = () => {
             clearable
             // searchable
             required
-            value={folder}
-            onChange={(e) => setFolder(e)}
+            value={selectedFolder}
+            onChange={(e) => setSelectedFolder(e)}
           />
           <Button
             variant="light"
@@ -64,7 +69,7 @@ const NewTodoInput = () => {
                 alignSelf: "flex-end"
               }
             })}
-            {...(!todo && !folder && { disabled: true })}
+            {...(!todo && !selectedFolder && { disabled: true })}
           >
             +
           </Button>

@@ -22,11 +22,11 @@ const TodoItem = (todo) => {
   };
 
   const handleCompleted = (completed, id) => {
-    completeTodo(id, completed);
+    modifyTodo(id, {...todo, completed});
   };
 
-  const handleSave = (id) => {
-    modifyTodo(id, toDoText);
+  const handleChange = (id) => {
+    modifyTodo(id, {...todo, text: toDoText});
     setOpened(false);
   };
 
@@ -63,7 +63,6 @@ const TodoItem = (todo) => {
             <a
               style={{ cursor: "pointer" }}
               onClick={() => setOpened((o) => !o)}
-              href="/#"
             >
               <FontAwesomeIcon
                 style={{ fontSize: "20px", color: "#474747" }}
@@ -85,14 +84,13 @@ const TodoItem = (todo) => {
               value={toDoText}
               onChange={(e) => setToDoText(e.currentTarget.value)}
             ></Textarea>
-            <Button color="green" onClick={() => handleSave(todo.id)}>
+            <Button color="green" onClick={() => handleChange(todo.id)}>
               Save
             </Button>
           </div>
         </Popover>
 
         <a
-          href="/#"
           style={{ cursor: "pointer" }}
           onClick={() => handleDelete(todo.id)}
         >

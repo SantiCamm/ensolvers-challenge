@@ -1,18 +1,18 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Avatar, Button, Group, Title } from "@mantine/core"
-import { GoogleLogout } from "react-google-login";
+import React, { useEffect, useState } from 'react';
+import { Avatar, Group, Title } from "@mantine/core"
+// import { GoogleLogout } from "react-google-login";
 import Logo from "../images/logo.png";
-import { GlobalContext } from '../context/GlobalState';
-import { useNavigate } from 'react-router-dom';
+// import { GlobalContext } from '../context/GlobalState';
+// import { useNavigate } from 'react-router-dom';
 
 const NavBar = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile") || "{}"));
-  const { logout } = useContext(GlobalContext);
-  const navigate = useNavigate();
+  // const { logout } = useContext(GlobalContext);
+  // const navigate = useNavigate();
 
-  const handleLogout = () => {
-    logout(navigate);
-  };
+  // const handleLogout = () => {
+  //   logout(navigate);
+  // };
 
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("profile") || "{}"));
@@ -32,7 +32,7 @@ const NavBar = () => {
           radius="xl"
           className="avatar"
         />
-        <GoogleLogout
+        {/* <GoogleLogout
           clientId={process.env.REACT_APP_CLIENT_ID}
           buttonText="Logout"
           onLogoutSuccess={handleLogout}
@@ -45,7 +45,7 @@ const NavBar = () => {
               LOG OUT
             </Button>
           )}
-        ></GoogleLogout>
+        ></GoogleLogout> */}
       </Group>
     </header>)
 };

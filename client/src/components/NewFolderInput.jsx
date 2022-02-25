@@ -9,13 +9,13 @@ const NewFolderInput = () => {
   const submitFolder = (e) => {
     e.preventDefault();
     const newFolder = {
-      name: folder
+      name: folder,
     };
 
     addFolder(newFolder);
     setFolder("");
   };
-  
+
   return (
     <div>
       <form onSubmit={submitFolder} className="input">
@@ -37,8 +37,8 @@ const NewFolderInput = () => {
             root: {
               width: 45,
               padding: 0,
-              alignSelf: "flex-end",
-            },
+              alignSelf: "flex-end"
+            }
           })}
           {...(!folder && { disabled: true })}
         >

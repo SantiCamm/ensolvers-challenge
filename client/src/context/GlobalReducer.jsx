@@ -8,14 +8,14 @@ const reducer = (state, action) => {
         foldersSelect: action.payload.map((folder) => folder.name)
       };
     case "ADD_FOLDER":
-      const { newFolder } = action.payload;
+      const newFolder = action.payload;
       return {
         ...state,
         folders: [...state.folders, newFolder],
         foldersSelect: [...state.foldersSelect, newFolder.name]
       };
     case "DELETE_FOLDER":
-      const { deletedFolder } = action.payload;
+      const deletedFolder = action.payload;
       return {
         ...state,
         folders: state.folders.filter(
@@ -26,11 +26,10 @@ const reducer = (state, action) => {
         ),
         todos: state.todos.filter((todo) => todo.folder !== action.payload.name)
       };
-
     case "GET_TODOS":
       return { ...state, todos: action.payload, isLoading: false };
     case "ADD_TODO":
-      const { newTodo } = action.payload;
+      const newTodo = action.payload;
       return {
         ...state,
         todos: [...state.todos, newTodo],
@@ -41,7 +40,7 @@ const reducer = (state, action) => {
         )
       };
     case "DELETE_TODO":
-      const { deletedTodo } = action.payload;
+      const deletedTodo = action.payload;
       return {
         ...state,
         todos: state.todos.filter((todo) => todo.id !== action.payload),
@@ -55,7 +54,7 @@ const reducer = (state, action) => {
         )
       };
     case "MODIFY_TODO":
-      const { modifiedTodo } = action.payload;
+      const modifiedTodo = action.payload;
       return {
         ...state,
         todos: state.todos.map((todo) =>
@@ -65,7 +64,9 @@ const reducer = (state, action) => {
           folder.id === modifiedTodo.folderId
             ? {
                 ...folder,
-                todos: folder.todos.map((todo) => todo.id === modifiedTodo.id ? modifiedTodo : todo)
+                todos: folder.todos.map((todo) =>
+                  todo.id === modifiedTodo.id ? modifiedTodo : todo
+                )
               }
             : folder
         )
@@ -78,13 +79,15 @@ const reducer = (state, action) => {
           todo.id === completedTodo.id ? completedTodo : todo
         ),
         folders: state.folders.map((folder) =>
-        folder.id === completedTodo.folderId
-          ? {
-              ...folder,
-              todos: folder.todos.map((todo) => todo.id === completedTodo.id ? completedTodo : todo)
-            }
-          : folder
-      )
+          folder.id === completedTodo.folderId
+            ? {
+                ...folder,
+                todos: folder.todos.map((todo) =>
+                  todo.id === completedTodo.id ? completedTodo : todo
+                )
+              }
+            : folder
+        )
       };
 
     case "GOOGLE_LOGIN":
