@@ -13,7 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBan, faPen } from "@fortawesome/free-solid-svg-icons";
 
 const TodoItem = (todo) => {
-  const { deleteTodo, modifyTodo, completeTodo } = useContext(GlobalContext);
+  const { deleteTodo, modifyTodo } = useContext(GlobalContext);
   const [opened, setOpened] = useState(false);
   const [toDoText, setToDoText] = useState(todo.text);
 
@@ -62,6 +62,7 @@ const TodoItem = (todo) => {
           target={
             <a
               style={{ cursor: "pointer" }}
+              href={() => false}
               onClick={() => setOpened((o) => !o)}
             >
               <FontAwesomeIcon
@@ -91,6 +92,7 @@ const TodoItem = (todo) => {
         </Popover>
 
         <a
+        href={() => false}
           style={{ cursor: "pointer" }}
           onClick={() => handleDelete(todo.id)}
         >

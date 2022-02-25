@@ -1,11 +1,10 @@
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Todos from "./pages/Todos";
 // import Login from "./pages/Login";
 // import PrivateRoute from "./routes/PrivateRoute";
 // import PrivateLogin from "./routes/PrivateLogin";
 import NavBar from "./components/Navbar";
-import NotFound from "./components/NotFound";
 
 function App() {
   // const location = useLocation();
@@ -41,7 +40,7 @@ function App() {
             />
           }
         /> */}
-          <Route path="*" element={<NotFound />}></Route>
+          <Route path="*" element={<Navigate to="/todos" replace />} />
         </Routes>
       </div>
     </>
